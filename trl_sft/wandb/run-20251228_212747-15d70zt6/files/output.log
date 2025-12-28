@@ -1,0 +1,12 @@
+  0%|                                                      | 0/63 [00:00<?, ?it/s]/root/miniconda3/envs/trl/lib/python3.10/site-packages/bitsandbytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during quantization")
+/root/miniconda3/envs/trl/lib/python3.10/site-packages/bitsandbytes/autograd/_functions.py:123: UserWarning: MatMul8bitLt: inputs will be cast from torch.float32 to float16 during quantization
+  warnings.warn(f"MatMul8bitLt: inputs will be cast from {A.dtype} to float16 during quantization")
+100%|█████████████████████████████████████████████| 63/63 [02:51<00:00,  2.72s/it]
+{'loss': 3.0142, 'grad_norm': 1.21875, 'learning_rate': 1.7142857142857142e-05, 'entropy': 2.9103711575269697, 'num_tokens': 60096.0, 'mean_token_accuracy': 0.4269510908052325, 'epoch': 0.16}
+{'loss': 3.0428, 'grad_norm': 1.46875, 'learning_rate': 1.3968253968253968e-05, 'entropy': 2.9349552750587464, 'num_tokens': 117268.0, 'mean_token_accuracy': 0.4411828022450209, 'epoch': 0.32}
+{'loss': 2.9508, 'grad_norm': 1.21875, 'learning_rate': 1.0793650793650794e-05, 'entropy': 2.958606627583504, 'num_tokens': 174401.0, 'mean_token_accuracy': 0.4529305510222912, 'epoch': 0.48}
+{'loss': 3.0261, 'grad_norm': 1.1484375, 'learning_rate': 7.61904761904762e-06, 'entropy': 2.981677258014679, 'num_tokens': 232734.0, 'mean_token_accuracy': 0.4349847134202719, 'epoch': 0.64}
+{'loss': 2.9453, 'grad_norm': 1.3125, 'learning_rate': 4.444444444444444e-06, 'entropy': 2.960603338479996, 'num_tokens': 290525.0, 'mean_token_accuracy': 0.45027637146413324, 'epoch': 0.8}
+{'loss': 3.0288, 'grad_norm': 1.09375, 'learning_rate': 1.26984126984127e-06, 'entropy': 2.9782152980566026, 'num_tokens': 348715.0, 'mean_token_accuracy': 0.438044385612011, 'epoch': 0.96}
+{'train_runtime': 174.5908, 'train_samples_per_second': 5.728, 'train_steps_per_second': 0.361, 'train_loss': 2.9958881347898454, 'entropy': 2.954645884037018, 'num_tokens': 363203.0, 'mean_token_accuracy': 0.4591097965836525, 'epoch': 1.0}
