@@ -12,3 +12,13 @@ TRL SFT
 
 5. 论文
 找related work
+
+
+Timeline:
+12/28 23:20 暂时完成SFT Baseline lora微调，还没有加入RLHF
+
+TODO: 阅读PPO论文
+PPO: proximal policy optimization
+
+12/29 TODO: 阅读reward model, value model 架构
+(in example_ppo-tldr.py) # --reward_model_path cleanrl/EleutherAI_pythia-1b-deduped__reward__tldr \
