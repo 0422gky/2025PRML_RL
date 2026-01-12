@@ -15,6 +15,8 @@ TRL SFT 做RLHF+PPO的微调
 
 ** 本README记录了比较多的一些代码阅读记录，如果想要看本仓库的代码运行结果可以到最后查看,一般在子仓库下有比较详细的代码运行指南
 
+实验用到的代码环境和trl相同,可以看`environment.yml`
+
 # PPO train 过程源码理解
 【【PPO强化学习】TRL PPO源码分析】 https://www.bilibili.com/video/BV1wUezzXEDJ/?share_source=copy_web&vd_source=011f1df919a7aa6b4f2befc8a3e17259
 
