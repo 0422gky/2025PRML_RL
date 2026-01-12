@@ -58,7 +58,7 @@ python examples/scripts/ppo/ppo_tldr.py \
     --stop_token eos \
     --response_length 53 \
     --eval_strategy steps \
-    --eval_steps 100
+    --eval_steps 100 
 
 accelerate launch --config_file examples/accelerate_configs/deepspeed_zero2.yaml \
     examples/scripts/ppo/ppo_tldr.py \
@@ -77,6 +77,75 @@ accelerate launch --config_file examples/accelerate_configs/deepspeed_zero2.yaml
     --stop_token eos \
     --eval_strategy steps \
     --eval_steps 100
+"""
+
+"""
+accelerate config 备用参数,不使用deepspeed.yaml,仅为了调试断点阅读源码
+上面的加入report to wandb为了不让trackio在hugging face部署过多的东西浪费时间
+
+# 1) 只关 Trackio 不关 wandb
+unset TRACKIO_SPACE_ID
+unset TRACKIO_DATASET_ID
+env | grep -i trackio  # 确认已没有输出
+
+# 2) wandb 正常用
+export WANDB_PROJECT="trl-ppo"
+# export WANDB_MODE=offline  # 没网就开
+
+# 3) 运行, 123的命令最好每次训练前先看一眼,不然很容易爆gpu
+export CUDA_VISIBLE_DEVICES=0
+export PYTORCH_ALLOC_CONF=expandable_segments:True
+
+调试命令：修改了 response length 53->32 和 total episode 30000 -> 1
+--report_to wandb 等调试跑通了再开
+
+remark: wandb 有时候也会卡住
+unset TRACKIO_SPACE_ID TRACKIO_DATASET_ID TRACKIO_PROJECT TRACKIO_SPACE
+export CUDA_VISIBLE_DEVICES=0
+export PYTORCH_ALLOC_CONF=expandable_segments:True
+export WANDB_MODE=disabled
+export PYTHONUNBUFFERED=1
+
+python examples/scripts/ppo/ppo_tldr.py \
+    --dataset_name trl-lib/tldr \
+    --dataset_test_split validation \
+    --learning_rate 3e-6 \
+    --output_dir pythia-1b-deduped-tldr-preference-sft-trl-style-ppo \
+    --per_device_train_batch_size 1 \
+    --gradient_accumulation_steps 64 \
+    --total_episodes 1 \
+    --model_name_or_path EleutherAI/pythia-1b-deduped \
+    --sft_model_path cleanrl/EleutherAI_pythia-1b-deduped__sft__tldr \
+    --reward_model_path cleanrl/EleutherAI_pythia-1b-deduped__reward__tldr \
+    --missing_eos_penalty 1.0 \
+    --stop_token eos \
+    --response_length 16 \
+    --eval_strategy steps \
+    --eval_steps 100
+
+accelerate launch \
+  --num_processes 1 \
+  --num_machines 1 \
+  --mixed_precision bf16 \
+  /workspace/trl/examples/scripts/ppo/ppo_tldr.py \
+    --dataset_name trl-lib/tldr \
+    --dataset_test_split validation \
+    --learning_rate 3e-6 \
+    --output_dir pythia-1b-deduped-tldr-preference-sft-trl-style-ppo \
+    --per_device_train_batch_size 1 \
+    --gradient_accumulation_steps 64 \
+    --local_rollout_forward_batch_size 1 \
+    --gradient_checkpointing True \
+    --total_episodes 30000 \
+    --model_name_or_path EleutherAI/pythia-1b-deduped \
+    --sft_model_path cleanrl/EleutherAI_pythia-1b-deduped__sft__tldr \
+    --reward_model_path cleanrl/EleutherAI_pythia-1b-deduped__reward__tldr \
+    --missing_eos_penalty 1.0 \
+    --stop_token eos \
+    --response_length 16 \
+    --eval_strategy steps \
+    --eval_steps 100 \
+    
 """
 
 """
