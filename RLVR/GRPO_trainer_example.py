@@ -104,7 +104,7 @@ def tldr_reward_func(completions, label=None, **kwargs):
         
         if gt:
             # 简单的奖励策略：基于与 ground truth 的相似度
-            # 这里使用简单的字符串匹配，你可以使用更复杂的指标（如 ROUGE, BLEU 等）
+            # 这里使用简单的字符串匹配，可以使用更复杂的指标（如 ROUGE, BLEU 等）
             completion_text = completion if isinstance(completion, str) else completion.get("content", "")
             gt_text = gt if isinstance(gt, str) else gt.get("content", "")
             
