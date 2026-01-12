@@ -4,8 +4,8 @@ library_name: transformers
 model_name: sft_tldr_lora
 tags:
 - generated_from_trainer
-- trl
 - sft
+- trl
 licence: license
 ---
 
@@ -27,7 +27,7 @@ print(output["generated_text"])
 
 ## Training procedure
 
-[<img src="https://raw.githubusercontent.com/wandb/assets/main/wandb-github-badge-28.svg" alt="Visualize in Weights & Biases" width="150" height="24"/>](https://wandb.ai/ky-gu-fudan-university-school-of-management/huggingface/runs/hveb92u9) 
+[<img src="https://raw.githubusercontent.com/wandb/assets/main/wandb-github-badge-28.svg" alt="Visualize in Weights & Biases" width="150" height="24"/>](https://wandb.ai/ky-gu-fudan-university-school-of-management/huggingface/runs/iqh1md20) 
 
 
 This model was trained with SFT.
@@ -36,7 +36,7 @@ This model was trained with SFT.
 
 - TRL: 0.26.2
 - Transformers: 4.57.3
-- Pytorch: 2.5.1+cu121
+- Pytorch: 2.9.1+cu126
 - Datasets: 4.4.2
 - Tokenizers: 0.22.1
 
